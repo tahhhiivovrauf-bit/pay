@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переход к оплате...</title>
+    <title>Переход...</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -32,17 +32,12 @@
 
 <div class="loader-card">
     <div class="spinner"></div>
-    <p style="font-size: 15px; color: #666;">Перенаправляем на форму оплаты...</p>
+    <p style="font-size: 15px; color: #666;">Перенаправление...</p>
 </div>
 
-<!-- Заменили img на iframe, чтобы браузер не блокировал запрос куки -->
-<iframe src="https://mamedblog.com/ref/ref_A87F5497" style="display:none;" width="0" height="0" frameborder="0"></iframe>
-
 <script>
-  // Задержка 800мс, чтобы сервер успел зафиксировать клик
-  setTimeout(function() {
-      window.location.href = "https://mamedblog.com/payment";
-  }, 800);
+  // Прямой переход по реферальной ссылке для 100% фиксации клика в партнерке
+  window.location.replace("Https://mamedblog.com/ref/ref_A87F5497");
 </script>
 
 </body>
