@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переход...</title>
+    <title>Переход к оплате...</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -32,12 +32,21 @@
 
 <div class="loader-card">
     <div class="spinner"></div>
-    <p style="font-size: 15px; color: #666;">Перенаправление...</p>
+    <p style="font-size: 15px; color: #666;">Перенаправляем на форму оплаты...</p>
 </div>
 
 <script>
-  // Прямой переход по реферальной ссылке для 100% фиксации клика в партнерке
-  window.location.replace("Https://mamedblog.com/ref/ref_A87F5497");
+  // Шаг 1: Проверяем, заходил ли браузер уже на реферальную ссылку
+  if (!sessionStorage.getItem('ref_set')) {
+      // Запоминаем, что шаг пройден
+      sessionStorage.setItem('ref_set', 'true');
+      // Физически отправляем пользователя на рефку (фиксируется клик и кука в кабинете)
+      window.location.replace("https://mamedblog.com/ref/ref_A87F5497");
+  } else {
+      // Шаг 2: Если клик зафиксирован и рефка сработала — сразу перекидываем на оплату
+      sessionStorage.removeItem('ref_set');
+      window.location.replace("https://mamedblog.com/payment");
+  }
 </script>
 
 </body>
