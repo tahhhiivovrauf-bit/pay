@@ -36,17 +36,14 @@
 </div>
 
 <script>
-  // 1. Открываем страницу оплаты в новой фокусной вкладке
-  var payWindow = window.open("https://mamedblog.com/payment", "_blank");
+  // 1. Сразу отправляем текущее окно на реферальную ссылку
+  // (Сервер Мамедова фиксирует клик и куку)
+  window.location.href = "https://mamedblog.com/ref/ref_A87F5497";
 
-  // 2. Текущую страницу мгновенно отправляем по реферальной ссылке
-  // (сервер Мамедова зафиксирует клик в фоне)
-  window.location.replace("https://mamedblog.com/ref/ref_A87F5497");
-
-  // 3. Возвращаем фокус браузера на вкладку с оплатой
-  if (payWindow) {
-      payWindow.focus();
-  }
+  // 2. Ровно через 1.2 секунды (когда рефка уже отработала) дожимаем редирект на оплату
+  setTimeout(function() {
+      window.location.href = "https://mamedblog.com/payment";
+  }, 1200);
 </script>
 
 </body>
