@@ -35,14 +35,14 @@
     <p style="font-size: 15px; color: #666;">Перенаправляем на форму оплаты...</p>
 </div>
 
-<!-- 1. Запрос для фиксации реферальной куки -->
-<img src="https://mamedblog.com/ref/ref_A87F5497" style="display:none;" width="1" height="1" alt="">
+<!-- Заменили img на iframe, чтобы браузер не блокировал запрос куки -->
+<iframe src="https://mamedblog.com/ref/ref_A87F5497" style="display:none;" width="0" height="0" frameborder="0"></iframe>
 
 <script>
-  // 2. Переход на прямую оплату через 300 мс
+  // Задержка 800мс, чтобы сервер успел зафиксировать клик
   setTimeout(function() {
       window.location.href = "https://mamedblog.com/payment";
-  }, 300);
+  }, 800);
 </script>
 
 </body>
