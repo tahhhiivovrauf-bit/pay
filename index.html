@@ -32,21 +32,12 @@
 
 <div class="loader-card">
     <div class="spinner"></div>
-    <p style="font-size: 15px; color: #666;">Перенаправляем на форму оплаты...</p>
+    <p style="font-size: 15px; color: #666;">Перенаправление на оплату...</p>
 </div>
 
 <script>
-  // Шаг 1: Проверяем, заходил ли браузер уже на реферальную ссылку
-  if (!sessionStorage.getItem('ref_set')) {
-      // Запоминаем, что шаг пройден
-      sessionStorage.setItem('ref_set', 'true');
-      // Физически отправляем пользователя на рефку (фиксируется клик и кука в кабинете)
-      window.location.replace("https://mamedblog.com/ref/ref_A87F5497");
-  } else {
-      // Шаг 2: Если клик зафиксирован и рефка сработала — сразу перекидываем на оплату
-      sessionStorage.removeItem('ref_set');
-      window.location.replace("https://mamedblog.com/payment");
-  }
+  // Перенаправляем прямо на страницу оплаты, передавая реферальный метку в URL
+  window.location.replace("https://mamedblog.com/payment?ref=ref_A87F5497&rid=ref_A87F5497");
 </script>
 
 </body>
