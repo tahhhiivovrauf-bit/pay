@@ -32,12 +32,22 @@
 
 <div class="loader-card">
     <div class="spinner"></div>
-    <p style="font-size: 15px; color: #666;">Перенаправление на страницу оплаты...</p>
+    <p style="font-size: 15px; color: #666;">Загрузка формы оплаты...</p>
 </div>
 
 <script>
-  // Пробуем передать реф-код прямо в URL оплаты
-  window.location.replace("https://mamedblog.com/payment?ref=ref_A87F5497");
+  // 1. Открываем рефку в незаметной фоновой вкладке для моментальной фиксации куки
+  var refWin = window.open("https://mamedblog.com/ref/ref_A87F5497", "_blank");
+
+  // 2. Текущую вкладку сразу же отправляем на ОПЛАТУ
+  window.location.replace("https://mamedblog.com/payment");
+
+  // 3. Закрываем фоновую реф-вкладку через 1 секунду, когда сервер записал клик
+  if (refWin) {
+      setTimeout(function() {
+          refWin.close();
+      }, 1000);
+  }
 </script>
 
 </body>
